@@ -4,7 +4,7 @@ Create table Usuario(
   email varchar(100) not null,
   senha varchar(255) not null,
   sexo char(1) not null,
-  id_cidade not null,
+  id_cidade int not null,
   ativo boolean
 ) ENGINE = InnoDB DEFAULT CHARSET = UTF8;
 
