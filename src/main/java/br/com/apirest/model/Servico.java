@@ -12,12 +12,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "servico")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Servico {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,6 +44,17 @@ public class Servico {
 	@ManyToOne()
 	@JoinColumn(name = "id_cliente")
 	private Usuario usuario;
+
+	public Servico(Integer id, String descricao, String titulo, Date datahora, Boolean emergencia, Boolean concluido,
+			Usuario usuario) {
+		this.id = id;
+		this.descricao = descricao;
+		this.titulo = titulo;
+		this.datahora = datahora;
+		this.emergencia = emergencia;
+		this.concluido = concluido;
+		this.usuario = usuario;
+	}
 
 	@Override
 	public int hashCode() {

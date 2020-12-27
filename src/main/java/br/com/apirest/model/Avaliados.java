@@ -8,23 +8,31 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "avaliados")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Avaliados {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private String id;
+	private Integer id;
 
 	@Column(name = "id_avaliador")
 	private Integer id_avaliador;
 
 	@Column(name = "id_avaliado")
 	private Integer id_avaliado;
+
+	public Avaliados(Integer id, Integer id_avaliador, Integer id_avaliado) {
+		this.id = id;
+		this.id_avaliador = id_avaliador;
+		this.id_avaliado = id_avaliado;
+	}
 
 	@Override
 	public int hashCode() {

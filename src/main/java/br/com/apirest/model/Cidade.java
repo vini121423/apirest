@@ -8,12 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name="cidade")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Cidade {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +27,12 @@ public class Cidade {
 	
 	@Column(name="uf")
 	private String uf;
+
+    public Cidade(Integer id, String nome, String uf) {
+    	this.id = id;
+    	this.nome = nome;
+    	this.uf = uf;
+    }
 
 	@Override
 	public int hashCode() {

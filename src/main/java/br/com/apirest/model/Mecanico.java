@@ -1,5 +1,7 @@
 package br.com.apirest.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +11,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.NoArgsConstructor;
+
+
+
+
 @Entity
 @Table(name = "mecanico")
+@NoArgsConstructor
 public class Mecanico {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,11 +50,27 @@ public class Mecanico {
 	private Integer qtde_avaliacao;
 
 	@Column(name = "media")
-	private Long media;
+	private BigDecimal media;
 
 	@ManyToOne
 	@JoinColumn(name = "id_cidade")
 	private Cidade cidade;
+
+	public Mecanico(Integer id, String email, String senha, Boolean ativo, String nome_mecanico, String nome_oficina,
+			String endereco, Integer soma_avaliacao, Integer qtde_avaliacao, BigDecimal media, Cidade cidade) {
+		this.id = id;
+		this.email = email;
+		this.senha = senha;
+		this.ativo = ativo;
+		this.nome_mecanico = nome_mecanico;
+		this.nome_oficina = nome_oficina;
+		this.endereco = endereco;
+		this.qtde_avaliacao = qtde_avaliacao;
+		this.soma_avaliacao = soma_avaliacao;
+		this.media = media;
+		this.cidade = cidade;
+
+	}
 
 	@Override
 	public int hashCode() {
