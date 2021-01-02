@@ -1,6 +1,6 @@
 package br.com.apirest.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,15 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "servico")
-@Getter
-@Setter
-@NoArgsConstructor
+
 public class Servico {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +28,7 @@ public class Servico {
 	private String titulo;
 
 	@Column(name = "datahora")
-	private Date datahora;
+	private LocalDate datahora;
 
 	@Column(name = "emergencia")
 	private Boolean emergencia;
@@ -44,17 +39,63 @@ public class Servico {
 	@ManyToOne()
 	@JoinColumn(name = "id_cliente")
 	private Usuario usuario;
+	
+	public Integer getId() {
+		return id;
+	}
 
-	public Servico(Integer id, String descricao, String titulo, Date datahora, Boolean emergencia, Boolean concluido,
-			Usuario usuario) {
+	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}
+
+	public LocalDate getDatahora() {
+		return datahora;
+	}
+
+	public void setDatahora(LocalDate datahora) {
 		this.datahora = datahora;
+	}
+
+	public Boolean getEmergencia() {
+		return emergencia;
+	}
+
+	public void setEmergencia(Boolean emergencia) {
 		this.emergencia = emergencia;
+	}
+
+	public Boolean getConcluido() {
+		return concluido;
+	}
+
+	public void setConcluido(Boolean concluido) {
 		this.concluido = concluido;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
 
 	@Override
 	public int hashCode() {

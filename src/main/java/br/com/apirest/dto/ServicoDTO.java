@@ -8,6 +8,7 @@ import lombok.Getter;
 
 @Getter
 public class ServicoDTO {
+	/*
 	private Integer id;
 	private String descricao;
 	private String titulo;
@@ -19,4 +20,5 @@ public class ServicoDTO {
 	public Servico convertToDTO() {
 		return new Servico(id, descricao, titulo, datahora, emergencia, concluido, usuario);
 	}
+	*/
 }

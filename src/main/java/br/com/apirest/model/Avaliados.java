@@ -5,33 +5,52 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "avaliados")
-@Getter
-@Setter
-@NoArgsConstructor
+
 public class Avaliados {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 
-	@Column(name = "id_avaliador")
-	private Integer id_avaliador;
+	@ManyToOne()
+	@JoinColumn(name = "id_avaliador")
+	private Usuario usuario;
+	
+	@ManyToOne()
+	@JoinColumn(name = "id_avaliado")
+	private Mecanico mecanico;
+	
+	
 
-	@Column(name = "id_avaliado")
-	private Integer id_avaliado;
+	public Integer getId() {
+		return id;
+	}
 
-	public Avaliados(Integer id, Integer id_avaliador, Integer id_avaliado) {
+	public void setId(Integer id) {
 		this.id = id;
-		this.id_avaliador = id_avaliador;
-		this.id_avaliado = id_avaliado;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Mecanico getMecanico() {
+		return mecanico;
+	}
+
+	public void setMecanico(Mecanico mecanico) {
+		this.mecanico = mecanico;
 	}
 
 	@Override

@@ -8,6 +8,7 @@ import lombok.Getter;
 
 @Getter
 public class MecanicoDTO {
+	/*
 	private Integer id;
 	private String email;
 	private String senha;
@@ -24,5 +25,6 @@ public class MecanicoDTO {
 		return new Mecanico(id, email, senha, ativo, nome_mecanico, nome_oficina, endereco, soma_avaliacao,
 				qtde_avaliacao, media, cidade);
 	}
+	*/
 
 }

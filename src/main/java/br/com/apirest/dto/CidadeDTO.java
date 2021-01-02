@@ -5,6 +5,7 @@ import lombok.Getter;
 
 @Getter
 public class CidadeDTO {
+ /*
 	private Integer id;
 	private String nome;
 	private String uf;
@@ -12,4 +13,5 @@ public class CidadeDTO {
 	public Cidade convertToDTO() {
 		return new Cidade(id, nome, uf);
 	}
+	*/
 }

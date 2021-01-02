@@ -1,6 +1,8 @@
 package br.com.apirest.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,16 +11,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.NoArgsConstructor;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
 @Entity
 @Table(name = "mecanico")
-@NoArgsConstructor
 public class Mecanico {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,20 +57,106 @@ public class Mecanico {
 	@JoinColumn(name = "id_cidade")
 	private Cidade cidade;
 
-	public Mecanico(Integer id, String email, String senha, Boolean ativo, String nome_mecanico, String nome_oficina,
-			String endereco, Integer soma_avaliacao, Integer qtde_avaliacao, BigDecimal media, Cidade cidade) {
-		this.id = id;
-		this.email = email;
-		this.senha = senha;
-		this.ativo = ativo;
-		this.nome_mecanico = nome_mecanico;
-		this.nome_oficina = nome_oficina;
-		this.endereco = endereco;
-		this.qtde_avaliacao = qtde_avaliacao;
-		this.soma_avaliacao = soma_avaliacao;
-		this.media = media;
-		this.cidade = cidade;
+	@JsonIgnore
+	@OneToMany(mappedBy = "mecanico")
+	private List<Avaliados> avaliado = new ArrayList<>();
+	
+	
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	public String getNome_mecanico() {
+		return nome_mecanico;
+	}
+
+	public void setNome_mecanico(String nome_mecanico) {
+		this.nome_mecanico = nome_mecanico;
+	}
+
+	public String getNome_oficina() {
+		return nome_oficina;
+	}
+
+	public void setNome_oficina(String nome_oficina) {
+		this.nome_oficina = nome_oficina;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public Integer getSoma_avaliacao() {
+		return soma_avaliacao;
+	}
+
+	public void setSoma_avaliacao(Integer soma_avaliacao) {
+		this.soma_avaliacao = soma_avaliacao;
+	}
+
+	public Integer getQtde_avaliacao() {
+		return qtde_avaliacao;
+	}
+
+	public void setQtde_avaliacao(Integer qtde_avaliacao) {
+		this.qtde_avaliacao = qtde_avaliacao;
+	}
+
+	public BigDecimal getMedia() {
+		return media;
+	}
+
+	public void setMedia(BigDecimal media) {
+		this.media = media;
+	}
+
+	public Cidade getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
+	}
+
+	public List<Avaliados> getAvaliado() {
+		return avaliado;
+	}
+
+	public void setAvaliado(List<Avaliados> avaliado) {
+		this.avaliado = avaliado;
 	}
 
 	@Override

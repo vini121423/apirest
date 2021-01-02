@@ -6,6 +6,7 @@ import lombok.Getter;
 
 @Getter
 public class UsuarioDTO {
+	/*
    private Integer id;
    private String nome;
    private String sexo;
@@ -17,4 +18,5 @@ public class UsuarioDTO {
    public Usuario convertToDTO() {
 	   return new Usuario(id,nome,sexo,email,senha,ativo,cidade);
    }
+   */
 }

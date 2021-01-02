@@ -1,21 +1,22 @@
 package br.com.apirest.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Entity
 @Table(name="cidade")
-@Getter
-@Setter
-@NoArgsConstructor
+
 public class Cidade {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,12 +28,54 @@ public class Cidade {
 	
 	@Column(name="uf")
 	private String uf;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "cidade")
+	private List<Usuario> usuarios = new ArrayList<>();
 
-    public Cidade(Integer id, String nome, String uf) {
-    	this.id = id;
-    	this.nome = nome;
-    	this.uf = uf;
-    }
+	@JsonIgnore
+	@OneToMany(mappedBy = "cidade")
+	private List<Mecanico> mecanicos = new ArrayList<>();
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getUf() {
+		return uf;
+	}
+
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+	
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
+	public List<Mecanico> getMecanicos() {
+		return mecanicos;
+	}
+
+	public void setMecanicos(List<Mecanico> mecanicos) {
+		this.mecanicos = mecanicos;
+	}
 
 	@Override
 	public int hashCode() {
